@@ -3,16 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install",
+    "postinstall": "browserify -g uglifyify src/client/pong.js src/client/mathHelper.js -o public/src/pong.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "browserify": "^14.4.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "keyboardjs": "^2.3.3",
     "morgan": "~1.8.1",
+    "pixi.js": "^4.5.3",
     "serve-favicon": "~2.4.2",
-    "bower": "~1.8.0"
+    "uglifyify": "^4.0.3"
   }
 }
