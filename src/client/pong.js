@@ -3,6 +3,7 @@ const RIGHT = false;
 
 var PIXI = require('pixi.js');
 var keyboardJS = require('keyboardjs');
+var domready = require("domready");
 
 var Ball = function () {
 
@@ -241,5 +242,9 @@ var init = function () {
 
     requestAnimationFrame(loopStep);
 };
+
+domready(function () {
+    init();
+});
 
 console.log("App initialized");
