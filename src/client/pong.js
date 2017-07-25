@@ -4,6 +4,7 @@ const RIGHT = false;
 var PIXI = require('pixi.js');
 var keyboardJS = require('keyboardjs');
 var domready = require("domready");
+var MathHelper = require("./mathHelper.js");
 
 var Ball = function () {
 
