@@ -242,6 +242,4 @@ var init = function () {
     requestAnimationFrame(loopStep);
 };
 
-document.body.addEventListener("load", init, false);
-
 console.log("App initialized");
