@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "browserify src/client/pong.js src/client/mathHelper.js -o public/src/pong.js",
+    "postinstall": "browserify -g uglifyify src/client/pong.js src/client/mathHelper.js -o public/src/pong.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -11,6 +11,7 @@
     "browserify": "^14.4.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
+    "domready": "^1.0.8",
     "express": "~4.15.2",
     "keyboardjs": "^2.3.3",
     "morgan": "~1.8.1",
