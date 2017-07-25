@@ -76,7 +76,6 @@ var Player = function (keyUp, keyDown, size, side) {
     self.visual = null;
 
     self.init = function () {
-        console.log("Initialize player");
         keyboardJS.bind(keyUp, function () {
             direction = -1;
             resetTime = true;
@@ -136,7 +135,6 @@ var Pong = function () {
 
     self.checkCollisions = function () {
         var collided = checkPlayerCollisions(self.player1) || checkPlayerCollisions(self.player2);
-        console.log(collided);
         if ((self.ball.x < -400 + self.ball.radius + 10 || self.ball.x > 400 - self.ball.radius - 10) && !collided) {
             self.ball.x > 0 ? self.player1.wins++ : self.player2.wins++;
             self.ball.x = 0;
