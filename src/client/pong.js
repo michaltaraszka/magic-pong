@@ -2,7 +2,7 @@ const LEFT = true;
 const RIGHT = false;
 
 var PIXI = require('pixi.js');
-var keyboardJS = require('keyboardJS');
+var keyboardJS = require('keyboardjs');
 
 var Ball = function () {
 
