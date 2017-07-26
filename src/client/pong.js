@@ -5,6 +5,7 @@ var PIXI = require('pixi.js');
 var keyboardJS = require('keyboardjs');
 var domready = require("domready");
 var MathHelper = require("./mathHelper.js");
+var Peer = require("peerjs");
 
 var Ball = function () {
 
@@ -180,6 +181,8 @@ var Pong = function () {
 
 
 var init = function () {
+    var peer = new Peer('someid', {host: 'localhost', port: 3000, path: '/peerjs'});
+
     var pong = new PIXI.Application(800, 600, {backgroundColor: 0x1099bb});
     document.getElementById("pong-wrapper").appendChild(pong.view);
 

@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('magic-pong:server');
 var http = require('http');
+var ExpressPeerServer = require('peer').ExpressPeerServer;
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +22,8 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+app.use('/peerjs', ExpressPeerServer(server, {debug: true}));
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -28,7 +31,8 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
+server.on('connection', function(id) {console.log('Connected: ' + id);});
+server.on('disconnect', function(id) {console.log('Disconnected: ' + id);});
 /**
  * Normalize a port into a number, string, or false.
  */
