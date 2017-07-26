@@ -53,7 +53,7 @@ var Player = function (keyUp, keyDown, size, side) {
 
     var self = this;
 
-    var fadeTimeInMilliseconds = 1000;
+    var fadeTimeInMilliseconds = 200;
     var defaultSpeed = 8;
 
     var currentTime = 0;
