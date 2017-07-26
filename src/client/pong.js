@@ -80,9 +80,15 @@ var Player = function (keyUp, keyDown, size, side) {
             direction = -1;
             resetTime = true;
         });
+        keyboardJS.bind(keyUp, null, function () {
+            resetTime = false;
+        });
         keyboardJS.bind(keyDown, function () {
             direction = 1;
             resetTime = true;
+        });
+        keyboardJS.bind(keyDown, null, function () {
+            resetTime = false;
         });
     };
 
@@ -100,11 +106,12 @@ var Player = function (keyUp, keyDown, size, side) {
     var calculateFinalSpeed = function (delta) {
         if (resetTime) {
             localCurrentTime = 0;
-            resetTime = false;
+            console.log("INPUT");
             return defaultSpeed * delta * direction;
         }
         if (localCurrentTime <= fadeTimeInMilliseconds) {
             localCurrentTime += currentTime - lastTime;
+            console.log("FADING");
             return interpolate(defaultSpeed * delta, direction, localCurrentTime)
         }
         return 0;
