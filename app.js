@@ -19,6 +19,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 
+app.set('view engine', 'ejs');
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -34,7 +36,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.sendfile('public/error.html');
 });
 
 module.exports = app;

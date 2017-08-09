@@ -65,3 +65,4 @@ $RECYCLE.BIN/
 *.lnk
 
 /.idea/
+/public/src/pong.js

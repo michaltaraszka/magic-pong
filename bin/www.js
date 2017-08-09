@@ -22,7 +22,7 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-app.use('/peerjs', ExpressPeerServer(server, {debug: true}));
+app.use('/', ExpressPeerServer(server, {debug: true}));
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -31,7 +31,9 @@ app.use('/peerjs', ExpressPeerServer(server, {debug: true}));
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-server.on('connection', function(id) {console.log('Connected: ' + id);});
+server.on('connection', function(id) {
+  console.log('Connected: ' + id);
+});
 server.on('disconnect', function(id) {console.log('Disconnected: ' + id);});
 /**
  * Normalize a port into a number, string, or false.
