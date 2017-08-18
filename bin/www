@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+const app = require('../src/server/app');
+const normalizePort = require('../src/server/util/normalizePort');
+const ExpressPeerServer = require('peer').ExpressPeerServer;
+
+
+/**
+ * Create HTTP server.
+ */
+let server = require("../src/server/server");
+
+let index = require('../src/server/routes/index');
+
+app.use('/', index);
+app.use('/peer', ExpressPeerServer(server, {debug: true}));
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    let err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.send('Page not found');
+});
+
+/**
+ * Get port from environment and store in Express.
+ */
+let port = normalizePort('3000');
+app.set('port', port);

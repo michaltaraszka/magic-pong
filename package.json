@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "browserify -g uglifyify src/client/pong.js src/client/mathHelper.js -o public/src/pong.js",
-    "start": "node ./bin/www.js"
+    "postinstall": "browserify -g uglifyify src/client/pong.js -o public/src/pong.js",
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
