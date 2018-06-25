@@ -9,6 +9,7 @@ class Game {
         this.ball = new Ball();
         this.player1 = new Player('w', 's', 120, LEFT);
         this.player2 = new Player('up', 'down', 120, RIGHT);
+	this.acceleration = 0.1;
     }
 
     updatePlayers() {
@@ -22,6 +23,7 @@ class Game {
             this.ball.x > 0 ? this.player1.wins++ : this.player2.wins++;
             this.ball.x = 0;
             this.ball.y = 0;
+	    this.ball.speed = 4;
             this.player1.y = 0;
             this.player2.y = 0;
         }
@@ -35,7 +37,7 @@ class Game {
             if ((this.ball.x < -400 + this.ball.radius + 10 && player.x < 0) || (this.ball.x > 400 - this.ball.radius - 10 && player.x > 0)) {
                 this.ball.x = player.x > 0 ? player.x - this.ball.radius - 10 : player.x + this.ball.radius + 10;
                 this.ball.invertHorizontal();
-		this.ball.speed = this.ball.speed + 0.05;
+		this.ball.speed = this.ball.speed + this.acceleration;
                 this.ball.vector.y -= player.speed / 20;
                 //normalize ball direction vector
                 let len = Math.sqrt(this.ball.vector.x * this.ball.vector.x + this.ball.vector.y * this.ball.vector.y);
