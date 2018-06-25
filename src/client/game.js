@@ -35,6 +35,7 @@ class Game {
             if ((this.ball.x < -400 + this.ball.radius + 10 && player.x < 0) || (this.ball.x > 400 - this.ball.radius - 10 && player.x > 0)) {
                 this.ball.x = player.x > 0 ? player.x - this.ball.radius - 10 : player.x + this.ball.radius + 10;
                 this.ball.invertHorizontal();
+		this.ball.speed = this.ball.speed + 0.05;
                 this.ball.vector.y -= player.speed / 20;
                 //normalize ball direction vector
                 let len = Math.sqrt(this.ball.vector.x * this.ball.vector.x + this.ball.vector.y * this.ball.vector.y);
